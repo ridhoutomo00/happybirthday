@@ -3,331 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Natasya Sayang</title>
+    <title>Kejutan Spesial Natasya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;600&display=swap');
-
-        :root {
-            --primary: #ffb5a7;
-            --secondary: #fcd5ce;
-            --accent: #f9dcc4;
-            --text: #4a4e69;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* --- 1. SETUP & CORE DESIGN --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #f8edeb;
-            color: var(--text);
+            background-color: #001529;
+            font-family: 'Montserrat', sans-serif;
+            color: #002147;
             overflow-x: hidden;
-            line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
+        /* --- Intro Screen (Layar Awal) --- */
+        #intro-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: #001529; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; transition: opacity 1s ease;
+        }
+
+        .btn-mulai {
+            background: #D4AF37; color: #001529; border: none; padding: 15px 40px;
+            font-size: 20px; font-weight: 600; border-radius: 50px; margin-top: 30px;
+            cursor: pointer; transition: transform 0.3s, background 0.3s;
+            font-family: 'Montserrat', sans-serif; box-shadow: 0 10px 20px rgba(212,175,55,0.3);
+        }
+        .btn-mulai:hover { transform: translateY(-5px); background: #FDF5E6; }
+
+        /* --- Layout Container --- */
         .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--white);
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-            position: relative;
+            max-width: 800px; margin: 0 auto; padding: 20px; padding-bottom: 100px;
         }
 
-        /* --- Header Section --- */
-        header {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            clip-path: ellipse(100% 100% at 50% 0%);
-            padding: 20px;
+        .slide {
+            background: #FDF5E6; padding: 50px 40px; margin: 40px 0;
+            border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative; overflow: hidden;
         }
 
-        header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* --- Content Section --- */
-        .content {
-            padding: 30px 20px;
-        }
-
-        .poem-section {
-            background: var(--secondary);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            font-style: italic;
-            text-align: center;
-            position: relative;
-        }
-
-        .poem-section::before {
-            content: '“';
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            color: var(--primary);
-            opacity: 0.5;
-        }
-
-        /* --- Timeline --- */
-        .timeline {
-            margin: 40px 0;
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary);
-        }
-
-        .timeline-item {
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -25px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
+        /* Dekorasi Sudut */
+        .slide::before {
+            content: ''; position: absolute; top: -50px; left: -50px;
+            width: 150px; height: 150px; background: rgba(212,175,55,0.1);
             border-radius: 50%;
-            background: var(--primary);
-            border: 2px solid var(--white);
         }
 
-        .timeline-date {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        h1 { font-size: 50px; margin-bottom: 10px; color: #D4AF37; text-align: center;}
+        h2 { font-size: 32px; border-bottom: 2px solid #D4AF37; display: inline-block; padding-bottom: 10px; margin-bottom: 30px; }
+        p { font-size: 18px; line-height: 1.8; color: #2c3e50; margin-bottom: 20px; }
+
+        /* --- Animasi Scroll (Scroll Reveal) --- */
+        .reveal {
+            opacity: 0; transform: translateY(80px); transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- 2. JAVASCRIPT SLIDESHOW (Lebih Bagus & Interaktif) --- */
+        .slideshow-container {
+            width: 100%; height: 400px; position: relative; margin: 30px 0;
+            border-radius: 15px; overflow: hidden; border: 8px solid white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
-        .timeline-content {
-            background: #fffafa;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid var(--secondary);
-            font-size: 0.95rem;
+        .mySlides {
+            display: none; width: 100%; height: 100%;
+        }
+        .mySlides img {
+            width: 100%; height: 100%; object-fit: cover;
         }
 
-        /* --- Health Card --- */
-        .health-card {
-            background: #fdf0d5;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-left: 5px solid #d4a373;
+        /* Tombol Prev & Next */
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; width: auto; margin-top: -22px;
+            padding: 16px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease;
+            border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.3); z-index: 10;
+        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev:hover, .next:hover { background-color: rgba(0,33,71,0.8); }
+
+        /* Tanda Titik (Dots) */
+        .dot-container { text-align: center; margin-top: -30px; position: relative; z-index: 11; }
+        .dot {
+            cursor: pointer; height: 12px; width: 12px; margin: 0 4px; background-color: #bbb;
+            border-radius: 50%; display: inline-block; transition: background-color 0.6s ease;
+        }
+        .active-dot, .dot:hover { background-color: #D4AF37; }
+
+        /* --- Elemen Khusus --- */
+        .quote {
+            font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px;
+            text-align: center; padding: 30px; background: white; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-left: 5px solid #D4AF37;
         }
 
-        .health-card h3 {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        ul { list-style: none; }
+        li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; font-size: 18px; }
+        li i { color: #D4AF37; font-size: 24px; margin-top: 3px; }
 
-        .health-list {
-            list-style: none;
-        }
-
-        .health-list li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        /* --- Message Card --- */
-        .message-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            border: 1px dashed var(--primary);
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #f08080;
-            transform: translateY(-3px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.8rem;
-            color: #999;
-        }
-
-        .heart {
-            color: #f08080;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .fade-in {
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Music Icon */
+        #music-btn {
+            position: fixed; bottom: 30px; right: 30px; background: #D4AF37; color: #001529;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 20px; cursor: pointer; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="fade-in">
-                <p>Happy Birthday, Sayang! ✨</p>
-                <h1>Natasya</h1>
-                <p>Si Hidung Imutt</p>
-                <p style="font-size: 0.9rem; margin-top: 5px;">5 September 2024 — Selamanya</p>
-            </div>
-        </header>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
-        <div class="content">
-            <div class="poem-section fade-in">
-                Selamat bertambah usia perempuan kuat, cerdas, dan baik hati. <br>
-                Perempuan yang sedih dan senangnya lari ke sajak. <br>
-                Semoga keberkahan selalu menyertai setiap langkahmu... 🌸
-            </div>
+    <button id="music-btn" onclick="toggleMusic()">
+        <i id="music-icon" class="fa-solid fa-music"></i>
+    </button>
 
-            <h2 style="margin-bottom: 20px; font-family: 'Dancing Script', cursive; font-size: 2rem;">Cerita Kita ✨</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">5 September 2024</div>
-                    <div class="timeline-content">
-                        <strong>Pertemuan Pertama 🍞</strong><br>
-                        Di penutupan acara KKN, mas memberanikan diri menawarkan roti ke adek. Siapa sangka dari roti itu, mas bisa mengenal perempuan sehebat kamu.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Oktober 2025</div>
-                    <div class="timeline-content">
-                        <strong>Pekanbaru ✈️</strong><br>
-                        Mas pertama kali menemui adek di sana. Jujur, adek cantik sekali. Seminggu kita habiskan untuk kulineran, nonton film, beli bunga segar 💐, dan fotobox bareng. Momen yang nggak akan mas lupakan.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">April 2026</div>
-                    <div class="timeline-content">
-                        <strong>Jambi 🚗</strong><br>
-                        Gantian adek yang menemui mas. Kita berkeliling kota Jambi bareng-bareng. Terima kasih sudah mau meluangkan waktu buat mas.
-                    </div>
-                </div>
-            </div>
-
-            <div class="message-card">
-                <p><strong>Natasya sayang,</strong> mas tahu belakangan ini berat. Sambil nyelesaiin tugas akhir, adek harus hadapi bos yang <em>red flag</em>. Keputusan adek buat <em>resign</em> itu sudah tepat. Adek berhak bahagia dan dihargai. Fokus ke tugas akhir dulu ya, mas yakin adek bisa lulus tepat waktu! 🎓✨</p>
-            </div>
-
-            <div class="health-card">
-                <h3>📢 Pesan dari Mas:</h3>
-                <ul class="health-list">
-                    <li>✅ <strong>Jangan telat makan!</strong> Perut jangan kosong karena adek ada asam lambung.</li>
-                    <li>✅ <strong>Ngopi secukupnya.</strong> Boleh ngopi, tapi wajib mam dulu ya!</li>
-                    <li>✅ <strong>Olahraga.</strong> Mas bangga banget adek sudah mulai rajin olahraga. Ada kemajuan lho! Lanjutkan ya.</li>
-                    <li>✅ <strong>Jajan aneh-aneh?</strong> Boleh, tapi harus dikurangi ya cantik.</li>
-                </ul>
-            </div>
-
-            <div class="message-card" style="background-color: #fdfafb;">
-                <p style="font-style: italic;">"Mas mohon maaf ya sayang baru ngucapin hari ini karena ada pekerjaan yang nggak bisa ditinggalin. Mas juga minta maaf kalau akhir-akhir ini susah dihubungi dan suka marah. Mas cuma khawatir sama kesehatan adek. I love you." ❤️</p>
-            </div>
-
-            <button class="btn" onclick="celebrate()">Klik Disini Sayang!</button>
-        </div>
-
-        <footer>
-            Dibuat dengan <span class="heart">❤️</span> oleh Mas <br>
-        </footer>
+    <div id="intro-screen">
+        <h1 style="font-size: 60px;">Hai Natasya... ❤️</h1>
+        <p style="color: #D4AF37; font-size: 20px; margin-top: 10px;">Mas punya sesuatu untuk adek.</p>
+        <button class="btn-mulai" onclick="bukaKejutan()">Buka Kejutannya</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-        function celebrate() {
-            var duration = 3 * 1000;
-            var end = Date.now() + duration;
+    <div class="container">
+        
+        <div class="slide reveal">
+            <h3 style="letter-spacing: 5px; color: #888; text-align: center;">5 September 2024 — Selamanya</h3>
+            <h1 style="margin-top: 20px;">Happy Birthday,<br>Adek Natasya.</h1>
+            <div style="width: 100px; height: 3px; background: #D4AF37; margin: 30px auto;"></div>
+            <p style="text-align: center;">Gulir (scroll) ke bawah pelan-pelan ya...</p>
+        </div>
 
-            (function frame() {
-              confetti({
-                particleCount: 3,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: ['#ffb5a7', '#fcd5ce', '#f9dcc4']
-              });
-              confetti({
-                particleCount: 3,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: ['#ffb5a7', '#fcd5ce', '#f9dcc4']
-              });
-
-              if (Date.now() < end) {
-                requestAnimationFrame(frame);
-              }
-            }());
+        <div class="slide reveal">
+            <h2>Awal Cerita Kita</h2>
+            <p>Ingat waktu penutupan acara KKN? Di situlah semuanya bermula. Cuma berawal dari mas yang nawarin roti ke adek, eh ternyata berlanjut jadi cerita yang panjang dan indah.</p>
             
-            alert("Selamat ulang tahun Natasya! Tetaplah bahagia yaaa ✨🎂");
+            <div class="foto-frame reveal" style="width:100%; height:350px; border-radius:15px; border:8px solid white; box-shadow:0 15px 30px rgba(0,0,0,0.1); overflow:hidden; margin:20px 0;">
+                <img src="foto1.jpg" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <p style="font-style: italic; color: #888; text-align: center;">Salah satu momen awal kita...</p>
+        </div>
+
+        <div class="slide reveal">
+            <h2>Pekanbaru, Oktober 2025</h2>
+            <p>Jujur, pertama kali mas nyamperin adek ke sana, mas deg-degan banget. Adek cantik banget hari itu. Seminggu kita habiskan waktu buat kulineran, beli bunga segar, dan cerita banyak hal.</p>
+            
+            <div class="slideshow-container reveal">
+                <div class="mySlides fade1">
+                    <img src="foto2.jpg">
+                </div>
+                <div class="mySlides fade1">
+                    <img src="foto3.jpg">
+                </div>
+                <div class="mySlides fade1">
+                    <img src="foto4.jpg">
+                </div>
+                <a class="prev" onclick="plusSlides(1, -1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+            </div>
+            <div class="dot-container" id="dot1">
+                <span class="dot" onclick="currentSlide(1, 1)"></span>
+                <span class="dot" onclick="currentSlide(1, 2)"></span>
+                <span class="dot" onclick="currentSlide(1, 3)"></span>
+            </div>
+        </div>
+
+        <div class="slide reveal">
+            <h2>Gantian di Jambi</h2>
+            <p>April 2026, gantian adek yang datang menemui mas. Kita keliling kota Jambi berdua. Terima kasih ya sayang, sudah mau melangkah sejauh ini buat nemuin mas.</p>
+            
+            <div class="slideshow-container reveal">
+                <div class="mySlides fade2">
+                    <img src="foto5.jpg">
+                </div>
+                <div class="mySlides fade2">
+                    <img src="foto6.jpg">
+                </div>
+                <div class="mySlides fade2">
+                    <img src="foto7.jpg">
+                </div>
+                <div class="mySlides fade2">
+                    <img src="foto8.jpg">
+                </div>
+                <a class="prev" onclick="plusSlides(2, -1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(2, 1)">&#10095;</a>
+            </div>
+            <div class="dot-container" id="dot2">
+                <span class="dot" onclick="currentSlide(2, 1)"></span>
+                <span class="dot" onclick="currentSlide(2, 2)"></span>
+                <span class="dot" onclick="currentSlide(2, 3)"></span>
+                <span class="dot" onclick="currentSlide(2, 4)"></span>
+            </div>
+        </div>
+
+        <div class="slide reveal" style="background: #001529; color: white;">
+            <h2 style="color: #D4AF37;">Pesan dari Hati</h2>
+            <div class="quote" style="background: transparent; color: white; border-left: 5px solid #D4AF37; box-shadow: none;">
+                "Selamat bertambah usia perempuan kuat, cantik, baik, dan cerdas. Perempuan yang sedih dan senang larinya ke sajak. Banyak hal yang membuatmu runtuh, tapi juga banyak hal yang sudah membuatmu tumbuh."
+            </div>
+        </div>
+
+        <div class="slide reveal">
+            <h2>Janji & Harapan Mas</h2>
+            <ul>
+                <li><i class="fa-solid fa-heart"></i> <span><strong>Tugas Akhir:</strong> Terus semangat ngerjain tugas akhirnya ya. Keputusan adek resign dari bos yang toxic itu udah sangat tepat! Mas yakin adek bisa lulus tepat waktu! 🎓✨</span></li>
+                <li><i class="fa-solid fa-spoon"></i> <span><strong>Asam Lambung:</strong> Maemnya jangan telat ya sayang! Inget perut jangan kosong karena adek ada GERD. Ngopi boleh asalkan perutnya udah keisi.</span></li>
+                <li><i class="fa-solid fa-person-running"></i> <span><strong>Olahraga:</strong> Mas bangga banget adek udah mulai rutin olahraga akhir-akhir ini. Peningkatan yang keren.</span></li>
+                <li><i class="fa-solid fa-face-sad-tear"></i> <span><strong>Maaf:</strong> Mas minta maaf baru ngucapin hari ini karena kerjaan numpuk yang nggak bisa mas tinggalkann. Maaf juga kalau akhir-akhir ini susah dihubungi dan suka marah. Mas murni karena khawatir sama adek. Jaga kesehatan yaaa sayang.</span></li>
+            </ul>
+        </div>
+
+        <div class="slide reveal" style="text-align: center; background: #001529; color: white; border: 2px solid #D4AF37;">
+            <h1 style="font-size: 80px; margin-top: 20px;">I Love You.</h1>
+            <p style="color: #D4AF37;">Selamat Ulang Tahun, Natasya.</p>
+            <div style="margin-top: 40px; font-style: italic; opacity: 0.7;">
+                — Tertanda, Mas.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi untuk memulai presentasi (Menghilangkan layar awal & putar musik)
+        function bukaKejutan() {
+            document.getElementById('intro-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro-screen').style.display = 'none';
+            }, 1000);
+            
+            document.getElementById('bg-music').play();
+        }
+
+        // Fungsi toggle musik (Jeda/Putar)
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            if (music.paused) {
+                music.play();
+                icon.className = 'fa-solid fa-music';
+            } else {
+                music.pause();
+                icon.className = 'fa-solid fa-volume-mute';
+            }
+        }
+
+        // --- Animasi Scroll (Intersection Observer) ---
+        function revealElements() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Jarak sebelum elemen muncul
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', revealElements);
+        revealElements(); // Trigger sekali saat halaman dimuat
+
+        // --- JavaScript Slideshow Logic (Lebih Bagus) ---
+        // Setup untuk 2 galeri slideshow
+        let slideIndex = [1, 1]; // Mulai dari slide pertama untuk kedua galeri
+        let slideId = ["fade1", "fade2"]; // Nama class untuk slides
+        let dotId = ["dot1", "dot2"]; // ID container untuk dots
+
+        showSlides(1, 0); // Tampilkan slide pertama galeri 1
+        showSlides(1, 1); // Tampilkan slide pertama galeri 2
+
+        // Fungsi untuk tombol Prev/Next
+        function plusSlides(galeriNum, n) {
+            showSlides(slideIndex[galeriNum-1] += n, galeriNum-1);
+        }
+
+        // Fungsi untuk klik Dots
+        function currentSlide(galeriNum, n) {
+            showSlides(slideIndex[galeriNum-1] = n, galeriNum-1);
+        }
+
+        // Inti Fungsi Slideshow
+        function showSlides(n, galeriNo) {
+            let i;
+            let x = document.getElementsByClassName(slideId[galeriNo]);
+            let dots = document.getElementById(dotId[galeriNo]).getElementsByClassName("dot");
+            
+            // Logika untuk reset slide jika sudah di akhir/awal
+            if (n > x.length) {slideIndex[galeriNo] = 1}    
+            if (n < 1) {slideIndex[galeriNo] = x.length}
+            
+            // Sembunyikan semua slide di galeri ini
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            
+            // Matikan semua dots aktif di galeri ini
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+            
+            // Tampilkan slide yang dipilih dan aktifkan dots-nya
+            x[slideIndex[galeriNo]-1].style.display = "block";  
+            dots[slideIndex[galeriNo]-1].className += " active-dot";
         }
     </script>
 </body>
