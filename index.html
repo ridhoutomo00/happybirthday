@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Bunga Matahariku 🌻</title>
+    <title>Happy Birthday Mentariku 🌻✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* --- 1. SETUP & THEME (Sunflower Palette) --- */
+        /* --- 1. SETUP & BACKGROUND THEME --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            /* Kanvas Navy Gelap agar Kuning Matahari terlihat menyala */
-            background: linear-gradient(135deg, #001529, #0f2027, #1a1a1a);
+            /* Background Gradient Gelap Modern (Navy ke Amber Gelap) */
+            background: linear-gradient(135deg, #001529, #0f2027, #3d2c1f);
             background-attachment: fixed;
             color: #fff;
             font-family: 'Poppins', sans-serif;
@@ -19,55 +19,58 @@
             scroll-behavior: smooth;
         }
 
-        /* --- 2. FLOATING SUNFLOWERS BACKGROUND (Matahari Kecil Terbang) --- */
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        
-        .particle-sunflower {
-            position: absolute;
-            bottom: -50px;
-            color: #FBD13E; /* Kuning Matahari */
+        /* --- 2. FLOATING SUNFLOWERS BACKGROUND (Matahari Kecil Terbang di Latar) --- */
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+        .particle {
+            position: absolute; bottom: -50px;
+            /* Warna Kuning Matahari ke Amber */
+            background: linear-gradient(45deg, #FBD13E, #FFD700, #FFA500);
+            border-radius: 50% 0 50% 50%; /* Bentuk Kelopak */
             opacity: 0.6;
-            filter: drop-shadow(0 0 5px rgba(251,209,62,0.3));
-            animation: floatSunflower linear infinite;
+            animation: floatPetal linear infinite;
         }
-        
-        @keyframes floatSunflower {
+        @keyframes floatPetal {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
         }
 
-        /* --- 3. CLICK BURST SUNFLOWERS (Ledakan Matahari Keluar) --- */
-        .burst-sunflower {
-            position: fixed;
-            z-index: 10000; /* Di atas segalanya */
-            color: #FFD700; /* Emas Terang */
-            pointer-events: none; /* Jangan ganggu klik */
-            animation: burstAnimation 1.5s ease-out forwards;
+        /* --- 3. SIDE FLOATING SUNFLOWERS (Matahari Kecil Terbang di Samping) --- */
+        #side-particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; /* Di depan background, di belakang konten */
+            pointer-events: none; /* Biar nggak ngeganggu klik */
         }
-
-        @keyframes burstAnimation {
-            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+        .particle-side {
+            position: absolute;
+            color: #FBD13E; /* Kuning Matahari Cerah */
+            opacity: 0.7;
+            filter: drop-shadow(0 0 5px rgba(251,209,62,0.4)); /* Efek Bersinar */
+            animation: floatSide linear infinite;
+        }
+        @keyframes floatSide {
+            0% { top: 100vh; transform: translate(0, 0) rotate(0); opacity: 0.7; }
             100% { 
-                /* Menyebar keluar dari tengah */
-                transform: translate(var(--vx), var(--vy)) scale(1.5) rotate(var(--rx)); 
+                top: -10vh; /* Terbang sampai hilang di atas */
+                /* Var --sway dan --rot diset via JavaScript untuk kerandoman */
+                transform: translate(var(--sway), 0) rotate(var(--rot)); 
                 opacity: 0; 
             }
         }
 
-        /* --- 4. EFEK GLASSMORPHISM (Pro Sunflower Style) --- */
+        /* --- 4. EFEK GLASSMORPHISM (KACA BURAM PRO) --- */
         .glass-card {
             background: rgba(255, 255, 255, 0.03); 
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(251, 209, 62, 0.1); /* Border Emas Samar */
+            border: 1px solid rgba(251, 209, 62, 0.1); /* Border Kuning Matahari Samar */
             border-radius: 20px;
             padding: 40px; margin: 40px auto;
-            box-shadow: 0 8px 32px 0 rgba(61, 44, 31, 0.5); /* Shadow Amber/Coklat */
+            box-shadow: 0 8px 32px 0 rgba(61, 44, 31, 0.4); /* Shadow Amber */
             max-width: 800px; width: 90%;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2 { font-family: 'Sacramento', cursive; color: #FBD13E; text-shadow: 0 0 10px rgba(251,209,62,0.3); }
+        /* --- TYPOGRAPHY (TEKS) --- */
+        h1, h2 { font-family: 'Sacramento', cursive; color: #FBD13E; /* Kuning Matahari */ text-shadow: 0 0 10px rgba(251,209,62,0.3); }
         h1 { font-size: 4.5rem; text-align: center; line-height: 1.2; }
         h2 { font-size: 3rem; margin-bottom: 20px; border-bottom: 1px solid rgba(251,209,62,0.3); padding-bottom: 10px;}
         p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; font-weight: 300; }
@@ -76,20 +79,23 @@
         #intro {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: #001529; z-index: 9999; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; transition: 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); text-align: center;
+            justify-content: center; align-items: center; transition: 1s ease-out; text-align: center;
         }
-        
         .btn-glow {
             margin-top: 40px; padding: 15px 40px; border: none; outline: none;
             color: #001529; 
-            /* Gradient Amber ke Gold */
+            /* Gradient Matahari (Amber ke Gold) */
             background: linear-gradient(45deg, #FFA500, #FBD13E, #FFD700);
             cursor: pointer; border-radius: 50px; font-family: 'Poppins', sans-serif; 
             font-size: 18px; font-weight: 600; box-shadow: 0 0 20px rgba(251, 209, 62, 0.5);
             transition: 0.3s; animation: pulseGlow 2s infinite;
         }
-        .btn-glow:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(251, 209, 62, 0.8); }
+        .btn-glow:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(251, 209, 62, 0.8); }
         @keyframes pulseGlow { 0% { box-shadow: 0 0 20px rgba(251, 209, 62, 0.5); } 50% { box-shadow: 0 0 40px rgba(251, 209, 62, 0.8); } 100% { box-shadow: 0 0 20px rgba(251, 209, 62, 0.5); } }
+
+        /* --- ANIMASI SCROLL REVEAL --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- SLIDESHOW PRO (FADE & ZOOM) --- */
         .slider-container {
@@ -120,10 +126,6 @@
             margin-top: 20px; border: 1px solid rgba(251,209,62,0.2);
         }
 
-        /* --- ANIMASI SCROLL REVEAL --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* --- LIST ICON & MUSIC BUTTON --- */
         ul { list-style: none; }
         li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
@@ -143,18 +145,19 @@
 <body>
 
     <div id="particles"></div>
+    
+    <div id="side-particles"></div>
 
     <audio id="bg-music" loop>
         <source src="hbd.mp3" type="audio/mpeg">
     </audio>
 
     <button id="music-toggle" onclick="toggleMusic()">
-        <i id="music-icon" class="fa-solid fa-sun"></i>
-    </button>
+        <i id="music-icon" class="fa-solid fa-sun"></i> </button>
 
     <div id="intro">
         <h1 id="typing-text" style="padding: 0 20px; color: #fff;"></h1>
-        <button class="btn-glow" onclick="bukaKejutan()">Buka Kejutannya ✨🌻</button>
+        <button class="btn-glow" onclick="bukaKejutan()">Buka Kejutannya 🌻✨</button>
     </div>
 
     <div style="padding-bottom: 100px; padding-top: 20px;">
@@ -189,9 +192,9 @@
         </div>
 
         <div class="glass-card reveal">
-            <h2>Jejak di Jambi, April 2026</h2>
+            <h2>Langkah Di Bawah Terang Mentari</h2>
             <p>Lalu di bulan April 2026 kemarin, giliran kamu yang meluangkan waktu, menempuh jarak untuk menemui mas di Jambi.</p>
-            <p>Berkeliling kota berdua, menertawakan hal-hal kecil... Terima kasih ya, Sayang. Terima kasih sudah mau terus tumbuh dan bersinar mekar sama-sama untuk kita.</p>
+            <p>Berkeliling kota berdua, menertawakan hal-hal kecil di bawah langit Jambi... Terima kasih ya, Sayang. Terima kasih sudah mau terus tumbuh dan bersinar mekar sama-sama untuk kita.</p>
             
             <div class="slider-container" id="slider2">
                 <img src="5.jpeg" class="slide-img active">
@@ -206,7 +209,7 @@
         </div>
 
         <div class="glass-card reveal" style="text-align: center; border-color: #FBD13E;">
-            <h2>Sajak Tulus Untuk Mentariku...</h2>
+            <h2>Doa Tulus Untukmentariku...</h2>
             <p style="font-size: 1.3rem; font-style: italic; line-height: 2;">
                 "Selamat bertambah usia perempuan kuat, cantik, baik, cerdas, dan manis. Perempuan yang sedih dan senang larinya ke sajak. Banyak hal yang membuatmu runtuh, tapi juga banyak hal yang sudah membuatmu tumbuh."
             </p>
@@ -218,8 +221,8 @@
             <ul>
                 <li><i class="fa-solid fa-sunflower"></i> <span><strong>Teruslah Mekar:</strong> Mas tahu pundakmu lagi terasa berat. Tapi ingat, kamu sangat hebat. Keputusanmu meninggalkan bos dan tempat kerja yang *red flag* itu bukti kamu berhak dihargai. Fokus selesaikan Tugas Akhirmu ya, mas selalu dukung penuh, persis matahari yang nggak pernah absen dukung bunga matahari untuk tumbuh! ✨🎓</span></li>
                 <li><i class="fa-solid fa-seedling"></i> <span><strong>Jaga Benih Kesehatan:</strong> Sayang, mas mohon jangan pernah telat makan lagi ya. Perut jangan kosong karena adek ada GERD. Ngopi boleh asalkan perut terisi makanan dulu. 🍲☕❌</span></li>
-                <li><i class="fa-solid fa-sun"></i> <span><strong>Sinar Semangat Olahraga:</strong> Mas seneng dan bangga banget lihat kamu mulai rajin olahraga lagi akhir-akhir ini. Terus pertahankan kemajuannya ya cantik, demi kesehatanmu sendiri. 🏃‍♀️💨</span></li>
-                <li><i class="fa-solid fa-envelope-open-text"></i> <span><strong>Maafkan Mas:</strong> Dan... mas sungguh minta maaf. Maaf karena pekerjaan yang nggak bisa mas tinggalkann, mas baru ngucapin sekarang. Maaf kalau belakangan ini mas susah dihubungi dan suka marah. Itu semua cuma karena mas sangat sayang dan takut kamu kenapa-napa. Jaga kesehatan yaaa sayang. ❤️</span></li>
+                <li><i class="fa-solid fa-sun"></i> <span><strong>Sinar Semangat:</strong> Mas seneng dan bangga banget lihat kamu mulai rajin olahraga lagi akhir-akhir ini. Terus pertahankan ya cantik, demi kesehatanmu sendiri. 🏃‍♀️💨</span></li>
+                <li><i class="fa-solid fa-envelope-open-text"></i> <span><strong>Maafkan Mas:</strong> Dan... mas sungguh minta maaf. Maaf karena pekerjaan yang nggak bisa mas tinggalkann, mas baru ngucapin sekarang. Maaf kalau belakangan ini mas susah dihubungi dan suka marah. Itu semua cuma karena mas sangat sayang dan takut kamu kenapa-napa. Jaga kesehatan yaaa sayang. ❤️🌻</span></li>
             </ul>
         </div>
 
@@ -232,75 +235,53 @@
     </div>
 
     <script>
-        // --- A. Bikin Bunga Matahari Kecil Terbang di Latar Belakang ---
-        function createFloatingSunflowers() {
-            const container = document.getElementById('particles');
-            const sunflowerCount = 30; // Jumlah matahari terbang
-
-            for(let i=0; i < sunflowerCount; i++) {
-                // Bikin elemen ikon FontAwesome
-                let sunflower = document.createElement('i');
-                sunflower.className = 'fa-solid fa-sunflower particle-sunflower';
-                
-                // Variasi Ukuran (Kecil-kecil)
-                let size = Math.random() * 15 + 10; // 10px - 25px
-                sunflower.style.fontSize = size + 'px';
-                
-                // Posisi Horizontal Acak
-                sunflower.style.left = Math.random() * 100 + 'vw';
-                
-                // Variasi Durasi & Delay Animasi
-                sunflower.style.animationDuration = Math.random() * 15 + 10 + 's';
-                sunflower.style.animationDelay = Math.random() * 10 + 's';
-                
-                container.appendChild(sunflower);
-            }
+        // 1. Bikin Efek Partikel Latar Belakang (Kelopak Bunga)
+        const particlesContainer = document.getElementById('particles');
+        for(let i=0; i<30; i++) {
+            let particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 15 + 5 + 'px';
+            particle.style.height = particle.style.width * 1.5 + 'px'; // Sedikit memanjang
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = Math.random() * 15 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particlesContainer.appendChild(particle);
         }
 
-        // --- B. Bikin "Ledakan" Bunga Matahari saat Klik Tombol ---
-        function createSunflowerBurst() {
-            const burstCount = 50; // Jumlah matahari yang meledak
-            const container = document.body;
-            
-            // Koordinat tengah layar (tempat tombol berada)
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+        // 2. Bikin Efek Bunga Matahari Samping (Baru!)
+        function createSideFloatingSunflowers() {
+            const sideParticlesContainer = document.getElementById('side-particles');
+            const count = 20; // Jumlah total bunga matahari di samping
 
-            for (let i = 0; i < burstCount; i++) {
+            for(let i=0; i<count; i++) {
                 let sf = document.createElement('i');
-                sf.className = 'fa-solid fa-sunflower burst-sunflower';
-                
-                // Ukuran acak untuk efek alami
-                let size = Math.random() * 25 + 15; // 15px - 40px
-                sf.style.fontSize = size + 'px';
-                
-                // Set posisi awal di tengah
-                sf.style.left = centerX + 'px';
-                sf.style.top = centerY + 'px';
+                sf.className = 'fa-solid fa-sunflower particle-side'; // Pakai icon bunga matahari
+                sf.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran acak kecil
 
-                // Hitung arah pencaran acak (Vector X dan Y)
-                // Menggunakan CSS Variables untuk animasi
-                const angle = Math.random() * Math.PI * 2; // Arah 360 derajat
-                const speed = Math.random() * 300 + 100; // Jarak pencaran
-                const vx = Math.cos(angle) * speed;
-                const vy = Math.sin(angle) * speed;
-                const rx = Math.random() * 1440 - 720; // Putaran acak
+                // Tentukan acak muncul di kiri atau kanan
+                if (Math.random() < 0.5) { // Sisi Kiri
+                    sf.style.left = Math.random() * 10 + 'vw'; // Jarak 0-10vw dari kiri
+                    // Var --sway untuk efek ayunan ke kanan saat terbang
+                    sf.style.setProperty('--sway', Math.random() * 5 + 'vw'); 
+                } else { // Sisi Kanan
+                    sf.style.right = Math.random() * 10 + 'vw'; // Jarak 0-10vw dari kanan
+                    // Var --sway untuk efek ayunan ke kiri saat terbang
+                    sf.style.setProperty('--sway', '-' + Math.random() * 5 + 'vw'); 
+                }
 
-                sf.style.setProperty('--vx', `${vx}px`);
-                sf.style.setProperty('--vy', `${vy}px`);
-                sf.style.setProperty('--rx', `${rx}deg`);
+                // Variasi durasi terbang (biar nggak barengan)
+                sf.style.animationDuration = Math.random() * 10 + 10 + 's';
+                // Variasi jeda mulai
+                sf.style.animationDelay = Math.random() * 10 + 's';
+                // Var --rot untuk kerandoman putaran bunga
+                sf.style.setProperty('--rot', Math.random() * 720 - 360 + 'deg'); 
 
-                container.appendChild(sf);
-
-                // Hapus elemen setelah animasi selesai (1.5s) agar tidak numpuk
-                setTimeout(() => {
-                    sf.remove();
-                }, 1500);
+                sideParticlesContainer.appendChild(sf);
             }
         }
 
-        // --- C. Efek Mengetik di Layar Intro ---
-        const text = "Hai Natasya, Bunga Matahariku... ❤️🌻";
+        // 3. Efek Mengetik di Awal (Typewriter)
+        const text = "Hai Natasya, Mentari Kecilku... ❤️🌻";
         let typingIndex = 0;
         function typeWriter() {
             if (typingIndex < text.length) {
@@ -309,26 +290,25 @@
                 setTimeout(typeWriter, 150);
             }
         }
+        window.onload = typeWriter;
 
-        // --- D. Logika Utama saat Halaman Dimuat ---
-        window.onload = function() {
-            typeWriter(); // Mulai ngetik
-            createFloatingSunflowers(); // Mulai matahari terbang
-        };
-
-        // --- E. Fungsi saat Tombol "Buka Kejutan" Diklik ---
+        // 4. Masuk ke Web & Putar Musik
+        let sideSunflowersCreated = false; // Flag biar nggak double nambahin bunga
         function bukaKejutan() {
-            // 1. Trigger Ledakan Bunga Matahari!!! 🌻💥
-            createSunflowerBurst();
-            
-            // 2. Transisi Layar Intro ke Atas pelan
+            // Hilangkan layar intro pelan-pelan
             document.getElementById('intro').style.transform = 'translateY(-100vh)';
             
-            // 3. Putar Musik HBD
+            // Putar musik HBD
             document.getElementById('bg-music').play();
+
+            // Panggil fungsi bunga matahari samping biar mulai bertebangan
+            if (!sideSunflowersCreated) {
+                createSideFloatingSunflowers();
+                sideSunflowersCreated = true;
+            }
         }
 
-        // --- F. Toggle Musik Jeda/Putar ---
+        // 5. Toggle Musik Jeda/Putar
         function toggleMusic() {
             const music = document.getElementById('bg-music');
             const icon = document.getElementById('music-icon');
@@ -341,7 +321,7 @@
             }
         }
 
-        // --- G. Animasi Scroll Reveal (Muncul Perlahan) ---
+        // 6. Animasi Scroll (Intersection Observer)
         function revealElements() {
             var reveals = document.querySelectorAll('.reveal');
             for (var i = 0; i < reveals.length; i++) {
@@ -353,9 +333,9 @@
             }
         }
         window.addEventListener('scroll', revealElements);
-        revealElements(); // Cek sekali saat muat
+        revealElements(); // Cek sekali saat halaman dimuat
 
-        // --- H. Logika Slideshow Pro ---
+        // 7. Logic Slideshow Pro
         function setupSlider(sliderId) {
             const container = document.getElementById(sliderId);
             const images = container.querySelectorAll('.slide-img');
