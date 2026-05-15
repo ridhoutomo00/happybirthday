@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Natasya Sayang</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #ffb5a7;
+            --secondary: #fcd5ce;
+            --accent: #f9dcc4;
+            --text: #4a4e69;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8edeb;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* --- Header Section --- */
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            clip-path: ellipse(100% 100% at 50% 0%);
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* --- Content Section --- */
+        .content {
+            padding: 30px 20px;
+        }
+
+        .poem-section {
+            background: var(--secondary);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-align: center;
+            position: relative;
+        }
+
+        .poem-section::before {
+            content: '“';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        /* --- Timeline --- */
+        .timeline {
+            margin: 40px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--white);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            background: #fffafa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- Health Card --- */
+        .health-card {
+            background: #fdf0d5;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #d4a373;
+        }
+
+        .health-card h3 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .health-list {
+            list-style: none;
+        }
+
+        .health-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* --- Message Card --- */
+        .message-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px dashed var(--primary);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f08080;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .heart {
+            color: #f08080;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="fade-in">
+                <p>Happy Birthday, Sayang! ✨</p>
+                <h1>Natasya</h1>
+                <p>Si Hidung Imutt</p>
+                <p style="font-size: 0.9rem; margin-top: 5px;">5 September 2024 — Selamanya</p>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="poem-section fade-in">
+                Selamat bertambah usia perempuan kuat, cerdas, dan baik hati. <br>
+                Perempuan yang sedih dan senangnya lari ke sajak. <br>
+                Semoga keberkahan selalu menyertai setiap langkahmu... 🌸
+            </div>
+
+            <h2 style="margin-bottom: 20px; font-family: 'Dancing Script', cursive; font-size: 2rem;">Cerita Kita ✨</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">5 September 2024</div>
+                    <div class="timeline-content">
+                        <strong>Pertemuan Pertama 🍞</strong><br>
+                        Di penutupan acara KKN, mas memberanikan diri menawarkan roti ke adek. Siapa sangka dari roti itu, mas bisa mengenal perempuan sehebat kamu.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Oktober 2025</div>
+                    <div class="timeline-content">
+                        <strong>Pekanbaru ✈️</strong><br>
+                        Mas pertama kali menemui adek di sana. Jujur, adek cantik sekali. Seminggu kita habiskan untuk kulineran, nonton film, beli bunga segar 💐, dan fotobox bareng. Momen yang nggak akan mas lupakan.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2026</div>
+                    <div class="timeline-content">
+                        <strong>Jambi 🚗</strong><br>
+                        Gantian adek yang menemui mas. Kita berkeliling kota Jambi bareng-bareng. Terima kasih sudah mau meluangkan waktu buat mas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <p><strong>Natasya sayang,</strong> mas tahu belakangan ini berat. Sambil nyelesaiin tugas akhir, adek harus hadapi bos yang <em>red flag</em>. Keputusan adek buat <em>resign</em> itu sudah tepat. Adek berhak bahagia dan dihargai. Fokus ke tugas akhir dulu ya, mas yakin adek bisa lulus tepat waktu! 🎓✨</p>
+            </div>
+
+            <div class="health-card">
+                <h3>📢 Pesan dari Mas:</h3>
+                <ul class="health-list">
+                    <li>✅ <strong>Jangan telat makan!</strong> Perut jangan kosong karena adek ada asam lambung.</li>
+                    <li>✅ <strong>Ngopi secukupnya.</strong> Boleh ngopi, tapi wajib mam dulu ya!</li>
+                    <li>✅ <strong>Olahraga.</strong> Mas bangga banget adek sudah mulai rajin olahraga. Ada kemajuan lho! Lanjutkan ya.</li>
+                    <li>✅ <strong>Jajan aneh-aneh?</strong> Boleh, tapi harus dikurangi ya cantik.</li>
+                </ul>
+            </div>
+
+            <div class="message-card" style="background-color: #fdfafb;">
+                <p style="font-style: italic;">"Mas mohon maaf ya sayang baru ngucapin hari ini karena ada pekerjaan yang nggak bisa ditinggalin. Mas juga minta maaf kalau akhir-akhir ini susah dihubungi dan suka marah. Mas cuma khawatir sama kesehatan adek. I love you." ❤️</p>
+            </div>
+
+            <button class="btn" onclick="celebrate()">Klik Disini Sayang!</button>
+        </div>
+
+        <footer>
+            Dibuat dengan <span class="heart">❤️</span> oleh Mas <br>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function celebrate() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+              confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: ['#ffb5a7', '#fcd5ce', '#f9dcc4']
+              });
+              confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: ['#ffb5a7', '#fcd5ce', '#f9dcc4']
+              });
+
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            }());
+            
+            alert("Selamat ulang tahun Natasya! Tetaplah bahagia yaaa ✨🎂");
+        }
+    </script>
+</body>
+</html>
